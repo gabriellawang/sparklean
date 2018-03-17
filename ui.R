@@ -11,6 +11,8 @@ library(shinydashboard)
 
 dashboardPage(
   dashboardHeader(title = "Sparklean Dashboard", titleWidth = 300),
+  
+  
   ## Sidebar content
   dashboardSidebar(
     width = 300,
@@ -26,8 +28,8 @@ dashboardPage(
       fluidRow(
         column(width=12, dateRangeInput('dateRange',
                                         label = 'Date Range',
-                                        start = Sys.Date(), end = Sys.Date()))
-        
+                                        start = Sys.Date(), end = Sys.Date(), max = Sys.Date(), format = "yyyy-mm-dd")
+        )
       )
     )
   ),
@@ -50,7 +52,6 @@ dashboardPage(
                   width=12,
                   dataTableOutput("table1")
                 )
-                
               )              
       ),
       
