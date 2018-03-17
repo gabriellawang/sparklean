@@ -22,8 +22,13 @@ dashboardPage(
                icon = icon("bar-chart", lib = "font-awesome")),
 
       menuItem("SIS Level 4", tabName = "lvl4", 
-               icon = icon("bar-chart", lib = "font-awesome"))
-      
+               icon = icon("bar-chart", lib = "font-awesome")),
+      fluidRow(
+        column(width=12, dateRangeInput('dateRange',
+                                        label = 'Date Range',
+                                        start = Sys.Date(), end = Sys.Date()))
+        
+      )
     )
   ),
   
@@ -31,11 +36,18 @@ dashboardPage(
     tabItems(
       tabItem(tabName = "lvl2", align = "center",
               fluidRow(
-                h2("Toilet Usage Analysis - Lvl 2"),
+                #h2("Toilet Usage Analysis - Lvl 2"),
                 align="center",
                 box(
+                  title = "Toilet Usage Analysis - Lvl 2", status = "primary", solidHeader = TRUE,
+                  collapsible = TRUE,
                   width=12,
-                  plotlyOutput("chart1"),
+                  plotlyOutput("chart1")
+                ),
+                box(
+                  title = "Toilet Usage Data - Lvl 2", status = "primary", solidHeader = TRUE,
+                  collapsible = TRUE,
+                  width=12,
                   dataTableOutput("table1")
                 )
                 
@@ -44,11 +56,18 @@ dashboardPage(
       
       tabItem(tabName = "lvl4", align = "center",
               fluidRow(
-                h2("Toilet Usage Analysis - Lvl 4"),
+                #h2("Toilet Usage Analysis - Lvl 4"),
                 align="center",
                 box(
+                  title = "Toilet Usage Analysis - Lvl 4", status = "primary", solidHeader = TRUE,
+                  collapsible = TRUE,
                   width=12,
-                  plotlyOutput("chart2"),
+                  plotlyOutput("chart2")
+                ),
+                box(
+                  title = "Toilet Usage Data - Lvl 4", status = "primary", solidHeader = TRUE,
+                  collapsible = TRUE,
+                  width=12,
                   dataTableOutput("table2")
                 )
               )
