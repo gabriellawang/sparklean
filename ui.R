@@ -22,13 +22,16 @@ dashboardPage(
 
       menuItem("SIS Level 2", tabName = "lvl2", 
                icon = icon("bar-chart", lib = "font-awesome")),
+      
+      menuItem("SIS Level 3", tabName = "lvl3", 
+               icon = icon("bar-chart", lib = "font-awesome")),
 
       menuItem("SIS Level 4", tabName = "lvl4", 
                icon = icon("bar-chart", lib = "font-awesome")),
       fluidRow(
         column(width=12, dateRangeInput('dateRange',
                                         label = 'Date Range',
-                                        start = Sys.Date(), end = Sys.Date(), max = Sys.Date(), format = "yyyy-mm-dd")
+                                        start = Sys.Date()-1, end = Sys.Date(), max = Sys.Date(), format = "yyyy-mm-dd")
         )
       )
     )
@@ -55,6 +58,24 @@ dashboardPage(
               )              
       ),
       
+      tabItem(tabName = "lvl3", align = "center",
+              fluidRow(
+                #h2("Toilet Usage Analysis - Lvl 3"),
+                align="center",
+                box(
+                  title = "Toilet Usage Analysis - Lvl 3", status = "primary", solidHeader = TRUE,
+                  collapsible = TRUE,
+                  width=12,
+                  plotlyOutput("chart2")
+                ),
+                box(
+                  title = "Toilet Usage Data - Lvl 3", status = "primary", solidHeader = TRUE,
+                  collapsible = TRUE,
+                  width=12,
+                  dataTableOutput("table2")
+                )
+              )
+          ),
       tabItem(tabName = "lvl4", align = "center",
               fluidRow(
                 #h2("Toilet Usage Analysis - Lvl 4"),
@@ -63,15 +84,15 @@ dashboardPage(
                   title = "Toilet Usage Analysis - Lvl 4", status = "primary", solidHeader = TRUE,
                   collapsible = TRUE,
                   width=12,
-                  plotlyOutput("chart2")
+                  plotlyOutput("chart3")
                 ),
                 box(
                   title = "Toilet Usage Data - Lvl 4", status = "primary", solidHeader = TRUE,
                   collapsible = TRUE,
                   width=12,
-                  dataTableOutput("table2")
+                  dataTableOutput("table3")
                 )
-              )
+              )              
           )
       )
     )
